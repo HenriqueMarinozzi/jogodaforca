@@ -1,0 +1,38 @@
+import random
+
+palavras = ["BOLO", "CELULAR", "SORVETE", "TECLADO", "CASA", "CAMISETA"]
+palavraSecreta = random.choice(palavras)
+
+letrasAcertadas = ''
+tentativas = 8
+
+print(f"Tentativas restantes: {tentativas}")
+
+while tentativas != 0:
+    palavraCorreta = ""
+    for letra in palavraSecreta:
+        if letra in letrasAcertadas:
+            palavraCorreta += letra
+        else:
+            palavraCorreta += "_"
+
+    print(f"Palavra: {palavraCorreta}")
+
+    if palavraCorreta == palavraSecreta:
+        print("Parabéns! Você acertou a palavra secreta.")
+        break
+
+    letra = input("Digite uma letra: ")
+
+    if letra in letrasAcertadas:
+        print("Você já digitou essa letra.")
+    else:
+        letrasAcertadas += letra
+        if letra not in palavraSecreta:
+            print("A letra não está na palavra.")
+        tentativas -= 1
+
+    print(f"Tentativas restantes: {tentativas}")
+
+if tentativas == 0:
+    print(f"Fim de jogo! A palavra era: {palavraSecreta}")
